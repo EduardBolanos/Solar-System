@@ -113,8 +113,17 @@ var moon = Sphere.create(
 );
 moon.translate(new Vector(11, 0,0));
 
+var mars = ThreeJSToUVMesh(filemap['marsJSON'], 'mars-texture', gl, uvProgram, true);
+var earth = ThreeJSToUVMesh(filemap['earthJSON'], 'earth-texture', gl, uvProgram, true);
+var saturn = ThreeJSToUVMesh(filemap['saturnJSON'], 'saturn-texture', gl, uvProgram, true);
+var uranus = ThreeJSToUVMesh(filemap['uranusJSON'], 'uranus-texture', gl, uvProgram, true);
+var neptune = ThreeJSToUVMesh(filemap['neptuneJSON'], 'neptune-texture', gl, uvProgram, true);
 	
-
+earth.translate(new Vector(25, 0, 0));
+mars.translate(new Vector(40, 0, 0));
+saturn.translate(new Vector(70, 0, 0));
+uranus.translate(new Vector(100, 0, 0));
+neptune.translate(new Vector(130, 0, 0));
 
 	// textured earth material properties easter egg
 	var earthDiffuse = 0.7;
@@ -203,6 +212,26 @@ moon.translate(new Vector(11, 0,0));
 		moon.rotateAround(origin, (new Quaternion(angle/2,0,0,1)));
 		moon.draw();
 
+		earth.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
+		earth.rotateAround(origin, orbit);
+		earth.draw();
+
+		mars.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
+		mars.rotateAround(origin, orbit);
+		mars.draw();
+
+		neptune.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
+		neptune.rotateAround(origin, orbit);
+		neptune.draw();
+
+		saturn.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
+		saturn.rotateAround(origin, orbit);
+		saturn.draw();
+
+		uranus.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
+		uranus.rotateAround(origin, orbit);
+		uranus.draw();
+
 		skybox.draw();
 
 		requestAnimationFrame(main);
@@ -221,7 +250,13 @@ var InitDemo = function()
 		'shaders/vert.skybox.glsl',
 		'shaders/frag.skybox.glsl',
 		'models/sun.json',
-		'models/mercury.json'
+		'models/mercury.json',
+		'models/earthmoon.json',
+		'models/mars.json',
+		'models/earth.json',
+		'models/uranus.json',
+		'models/saturn.json',
+		'models/neptune.json'
 	];
 
 	// imported file keys for file key-value map, respective to locations
@@ -233,7 +268,13 @@ var InitDemo = function()
 		'skyboxVertShaderText',
 		'skyboxFragShaderText',
 		'sunJSON',
-		'mercuryJSON'
+		'mercuryJSON',
+		'earthmoonJSON',
+		'marsJSON',
+		'earthJSON',
+		'uranusJSON',
+		'saturnJSON',
+		'neptuneJSON'
 	];
 
 	// file types, respective to locations (text or JSON)
@@ -244,6 +285,12 @@ var InitDemo = function()
 		'text',
 		'text',
 		'text',
+		'json',
+		'json',
+		'json',
+		'json',
+		'json',
+		'json',
 		'json',
 		'json'
 	];
