@@ -192,39 +192,39 @@ var skybox = new Skybox(gl, skyboxProgram, skyboxImageIDs, camera);
 		sun.draw();
 
 		mercury.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		mercury.rotateAround(origin, orbit);
+		mercury.rotateAround(origin, new Quaternion(angle/2, 0, 1, 0, true));
 		mercury.draw();
 
 		venus.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		venus.rotateAround(origin, orbit);
+		venus.rotateAround(origin, new Quaternion(angle/2, 0, 0.8, 0, true));
 		venus.draw();
 
 		earth.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		earth.rotateAround(origin, orbit);
+		earth.rotateAround(origin, new Quaternion(angle/2, 0, 0.7, 0, true));
 		earth.draw();
 
 		mars.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		mars.rotateAround(origin, orbit);
+		mars.rotateAround(origin, new Quaternion(angle/2, 0, 0.6, 0, true));
 		mars.draw();
 
 		jupiter.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		jupiter.rotateAround(origin, orbit);
+		jupiter.rotateAround(origin, new Quaternion(angle/2, 0, 0.5, 0, true));
 		jupiter.draw();
 
 		saturn.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		saturn.rotateAround(origin, orbit);
+		saturn.rotateAround(origin, new Quaternion(angle/2, 0, 0.4, 0, true));
 		saturn.draw();
 
 		uranus.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		uranus.rotateAround(origin, orbit);
+		uranus.rotateAround(origin, new Quaternion(angle/2, 0, 0.23, 0, true));
 		uranus.draw();
 
 		neptune.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		neptune.rotateAround(origin, orbit);
+		neptune.rotateAround(origin, new Quaternion(angle/2, 0, 0.2, 0, true));
 		neptune.draw();
 
 		pluto.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		pluto.rotateAround(origin, orbit);
+		pluto.rotateAround(origin, new Quaternion(angle/2, 0, 0.1, 0, true));
 		pluto.draw();
 
 		skybox.draw();
