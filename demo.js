@@ -89,78 +89,60 @@ var RunDemo = function (filemap)
 ////////////////////////////////////////////////////////////////////////
 
 var sun = ThreeJSToUVMesh(filemap['sunJSON'], 'sun-texture', gl, uvProgram, true);
-//var mercury = ThreeJSToUVMesh(filemap['mercuryJSON'], 'mercury-texture', gl, uvProgram, true);
-
-var mercury = Sphere.create(
-	gl,
-	uvProgram,
-	40,
-	40,
-	'UV',
-	'mercury-texture',
-	false
-);
-mercury.translate(new Vector(10, 0, 0));
-
-var moon = Sphere.create(
-	gl,
-	uvProgram,
-	40,
-	40,
-	'UV',
-	'earthmoon-texture',
-	false
-);
-moon.translate(new Vector(11, 0,0));
-
-var mars = ThreeJSToUVMesh(filemap['marsJSON'], 'mars-texture', gl, uvProgram, true);
+var mercury = ThreeJSToUVMesh(filemap['mercuryJSON'], 'mercury-texture', gl, uvProgram, true);
+var venus = ThreeJSToUVMesh(filemap['venusJSON'], 'venus-texture', gl, uvProgram, true);
 var earth = ThreeJSToUVMesh(filemap['earthJSON'], 'earth-texture', gl, uvProgram, true);
+var mars = ThreeJSToUVMesh(filemap['marsJSON'], 'mars-texture', gl, uvProgram, true);
+var jupiter = ThreeJSToUVMesh(filemap['jupiterJSON'], 'jupiter-texture', gl, uvProgram, true)
 var saturn = ThreeJSToUVMesh(filemap['saturnJSON'], 'saturn-texture', gl, uvProgram, true);
 var uranus = ThreeJSToUVMesh(filemap['uranusJSON'], 'uranus-texture', gl, uvProgram, true);
 var neptune = ThreeJSToUVMesh(filemap['neptuneJSON'], 'neptune-texture', gl, uvProgram, true);
-	
-earth.translate(new Vector(25, 0, 0));
-mars.translate(new Vector(40, 0, 0));
-saturn.translate(new Vector(70, 0, 0));
-uranus.translate(new Vector(100, 0, 0));
-neptune.translate(new Vector(130, 0, 0));
+var pluto = ThreeJSToUVMesh(filemap['plutoJSON'], 'pluto-texture', gl, uvProgram, true);
+
+mercury.translate(new Vector(25, 0, 0));
+venus.translate(new Vector(35, 0, 0));
+earth.translate(new Vector(45, 0, 0));
+mars.translate(new Vector(60, 0, 0));
+jupiter.translate(new Vector(90, 0, 0));
+saturn.translate(new Vector(120, 0, 0));
+uranus.translate(new Vector(150, 0, 0));
+neptune.translate(new Vector(180, 0, 0));
+pluto.translate(new Vector(210, 0, 0));
+
+// skybox
+var skyboxImageIDs = [
+	'skybox-right',
+	'skybox-left',
+	'skybox-top',
+	'skybox-bottom',
+	'skybox-back',
+	'skybox-front'
+];
+var skybox = new Skybox(gl, skyboxProgram, skyboxImageIDs, camera);
 
 	// textured earth material properties easter egg
-	var earthDiffuse = 0.7;
-	var earthSpecular = 0.3;
-	var earthAmbient = 0.2;
-	var earthShininess = 0.1;
+	// var earthDiffuse = 0.7;
+	// var earthSpecular = 0.3;
+	// var earthAmbient = 0.2;
+	// var earthShininess = 0.1;
 
-	// create textured earth (sphere)
-	uvEarth = new UVMesh(
-		gl,
-		uvProgram,
-		Sphere.positionArray(30,30),
-		Sphere.indexArray(30,30),
-		Sphere.positionArray(30,30),
-		Sphere.uvArray(30,30),
-		'earth-texture',
-		false,
-		earthDiffuse,
-		earthSpecular,
-		earthAmbient,
-		earthShininess
-	);
+	// // create textured earth (sphere)
+	// uvEarth = new UVMesh(
+	// 	gl,
+	// 	uvProgram,
+	// 	Sphere.positionArray(30,30),
+	// 	Sphere.indexArray(30,30),
+	// 	Sphere.positionArray(30,30),
+	// 	Sphere.uvArray(30,30),
+	// 	'earth-texture',
+	// 	false,
+	// 	earthDiffuse,
+	// 	earthSpecular,
+	// 	earthAmbient,
+	// 	earthShininess
+	// );
 
-	uvEarth.translate(new Vector(2, 0, 0));
-
-
-
-	// skybox
-	var skyboxImageIDs = [
-		'skybox-right',
-		'skybox-left',
-		'skybox-top',
-		'skybox-bottom',
-		'skybox-back',
-		'skybox-front'
-	];
-	var skybox = new Skybox(gl, skyboxProgram, skyboxImageIDs, camera);
+	// uvEarth.translate(new Vector(2, 0, 0));
 
 
 	// set up some arbitrary constants for motion
@@ -175,11 +157,16 @@ neptune.translate(new Vector(130, 0, 0));
 	var cosTheta;
 	var lightPosition;// = new Vector(2, 0, 1.5);
 
+	// Math for origins and orbits of the planets
 	var angle = Math.PI / 100;
 	var origin = new Vector();
 	var orbit = new Quaternion(angle/2, 0, 1, 0, true);
-
 	var pos = new Vector(0,0,0);
+
+	// change orbits for planets
+	// moon orbits 
+	// change camera startup
+	// shadow mapping maybe
 
 	var main = function()
 	{
@@ -208,9 +195,9 @@ neptune.translate(new Vector(130, 0, 0));
 		mercury.rotateAround(origin, orbit);
 		mercury.draw();
 
-		moon.rotateAround(origin, orbit);
-		moon.rotateAround(origin, (new Quaternion(angle/2,0,0,1)));
-		moon.draw();
+		venus.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
+		venus.rotateAround(origin, orbit);
+		venus.draw();
 
 		earth.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
 		earth.rotateAround(origin, orbit);
@@ -220,9 +207,9 @@ neptune.translate(new Vector(130, 0, 0));
 		mars.rotateAround(origin, orbit);
 		mars.draw();
 
-		neptune.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		neptune.rotateAround(origin, orbit);
-		neptune.draw();
+		jupiter.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
+		jupiter.rotateAround(origin, orbit);
+		jupiter.draw();
 
 		saturn.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
 		saturn.rotateAround(origin, orbit);
@@ -231,6 +218,14 @@ neptune.translate(new Vector(130, 0, 0));
 		uranus.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
 		uranus.rotateAround(origin, orbit);
 		uranus.draw();
+
+		neptune.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
+		neptune.rotateAround(origin, orbit);
+		neptune.draw();
+
+		pluto.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
+		pluto.rotateAround(origin, orbit);
+		pluto.draw();
 
 		skybox.draw();
 
@@ -251,12 +246,14 @@ var InitDemo = function()
 		'shaders/frag.skybox.glsl',
 		'models/sun.json',
 		'models/mercury.json',
-		'models/earthmoon.json',
-		'models/mars.json',
+		'models/venus.json',
 		'models/earth.json',
-		'models/uranus.json',
+		'models/mars.json',
+		'models/jupiter.json',
 		'models/saturn.json',
-		'models/neptune.json'
+		'models/uranus.json',
+		'models/neptune.json',
+		'models/pluto.json'
 	];
 
 	// imported file keys for file key-value map, respective to locations
@@ -269,12 +266,14 @@ var InitDemo = function()
 		'skyboxFragShaderText',
 		'sunJSON',
 		'mercuryJSON',
-		'earthmoonJSON',
-		'marsJSON',
+		'venusJSON',
 		'earthJSON',
-		'uranusJSON',
+		'marsJSON',
+		'jupiterJSON',
 		'saturnJSON',
-		'neptuneJSON'
+		'uranusJSON',
+		'neptuneJSON',
+		'plutoJSON'
 	];
 
 	// file types, respective to locations (text or JSON)
@@ -285,6 +284,9 @@ var InitDemo = function()
 		'text',
 		'text',
 		'text',
+		'json',
+		'json',
+		'json',
 		'json',
 		'json',
 		'json',
