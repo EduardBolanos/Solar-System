@@ -89,8 +89,29 @@ var RunDemo = function (filemap)
 ////////////////////////////////////////////////////////////////////////
 
 var sun = ThreeJSToUVMesh(filemap['sunJSON'], 'sun-texture', gl, uvProgram, true);
-var mercury = ThreeJSToUVMesh(filemap['mercuryJSON'], 'mercury-texture', gl, uvProgram, true);
+//var mercury = ThreeJSToUVMesh(filemap['mercuryJSON'], 'mercury-texture', gl, uvProgram, true);
 
+var mercury = Sphere.create(
+	gl,
+	uvProgram,
+	40,
+	40,
+	'UV',
+	'mercury-texture',
+	false
+);
+mercury.translate(new Vector(10, 0, 0));
+
+var moon = Sphere.create(
+	gl,
+	uvProgram,
+	40,
+	40,
+	'UV',
+	'earthmoon-texture',
+	false
+);
+moon.translate(new Vector(11, 0,0));
 
 	
 
@@ -145,6 +166,12 @@ var mercury = ThreeJSToUVMesh(filemap['mercuryJSON'], 'mercury-texture', gl, uvP
 	var cosTheta;
 	var lightPosition;// = new Vector(2, 0, 1.5);
 
+	var angle = Math.PI / 100;
+	var origin = new Vector();
+	var orbit = new Quaternion(angle/2, 0, 1, 0, true);
+
+	var pos = new Vector(0,0,0);
+
 	var main = function()
 	{
 		gl.clear(gl.DEPTH_BUFFER_BIT | gl.COLOR_BUFFER_BIT);
@@ -169,9 +196,12 @@ var mercury = ThreeJSToUVMesh(filemap['mercuryJSON'], 'mercury-texture', gl, uvP
 		sun.draw();
 
 		mercury.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
+		mercury.rotateAround(origin, orbit);
 		mercury.draw();
 
-		//uvEarth.draw();
+		moon.rotateAround(origin, orbit);
+		moon.rotateAround(origin, (new Quaternion(angle/2,0,0,1)));
+		moon.draw();
 
 		skybox.draw();
 
