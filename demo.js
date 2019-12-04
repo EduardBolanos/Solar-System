@@ -86,7 +86,9 @@ var RunDemo = function (filemap)
 	var directionalLightSpecular = new Vector(0.4, 0.7, 0.6);
 	lightManager.addDirectionalLight(directionalLightDirection, directionalLightDiffuse, directionalLightSpecular);
 	lightManager.update();
-	////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////
+
+	// Importing the sun and all the planets
 
 	var sun = ThreeJSToUVMesh(filemap['sunJSON'], 'sun-texture', gl, uvProgram, true);
 	var mercury = ThreeJSToUVMesh(filemap['mercuryJSON'], 'mercury-texture', gl, uvProgram, true);
@@ -98,6 +100,8 @@ var RunDemo = function (filemap)
 	var uranus = ThreeJSToUVMesh(filemap['uranusJSON'], 'uranus-texture', gl, uvProgram, true);
 	var neptune = ThreeJSToUVMesh(filemap['neptuneJSON'], 'neptune-texture', gl, uvProgram, true);
 	var pluto = ThreeJSToUVMesh(filemap['plutoJSON'], 'pluto-texture', gl, uvProgram, true);
+
+	// Importing the moons
 
 	// This is the old distances of the planets
 
@@ -124,7 +128,7 @@ var RunDemo = function (filemap)
 	pluto.translate(new Vector(290, 0, 0));
 
 
-	// skybox
+	// skybox aka the universe
 	var skyboxImageIDs = [
 		'skybox-right',
 		'skybox-left',
@@ -172,7 +176,7 @@ var RunDemo = function (filemap)
 	var cosTheta;
 	var lightPosition;// = new Vector(2, 0, 1.5);
 
-	// Math for origins and orbits of the planets
+	// some arbitrary constants for origins and orbits of the planets
 	var angle = Math.PI / 100;
 	var origin = new Vector();
 	var orbit = new Quaternion(angle/2, 0, 1, 0, true);
