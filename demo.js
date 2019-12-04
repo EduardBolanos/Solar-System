@@ -86,39 +86,54 @@ var RunDemo = function (filemap)
 	var directionalLightSpecular = new Vector(0.4, 0.7, 0.6);
 	lightManager.addDirectionalLight(directionalLightDirection, directionalLightDiffuse, directionalLightSpecular);
 	lightManager.update();
-////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////
 
-var sun = ThreeJSToUVMesh(filemap['sunJSON'], 'sun-texture', gl, uvProgram, true);
-var mercury = ThreeJSToUVMesh(filemap['mercuryJSON'], 'mercury-texture', gl, uvProgram, true);
-var venus = ThreeJSToUVMesh(filemap['venusJSON'], 'venus-texture', gl, uvProgram, true);
-var earth = ThreeJSToUVMesh(filemap['earthJSON'], 'earth-texture', gl, uvProgram, true);
-var mars = ThreeJSToUVMesh(filemap['marsJSON'], 'mars-texture', gl, uvProgram, true);
-var jupiter = ThreeJSToUVMesh(filemap['jupiterJSON'], 'jupiter-texture', gl, uvProgram, true)
-var saturn = ThreeJSToUVMesh(filemap['saturnJSON'], 'saturn-texture', gl, uvProgram, true);
-var uranus = ThreeJSToUVMesh(filemap['uranusJSON'], 'uranus-texture', gl, uvProgram, true);
-var neptune = ThreeJSToUVMesh(filemap['neptuneJSON'], 'neptune-texture', gl, uvProgram, true);
-var pluto = ThreeJSToUVMesh(filemap['plutoJSON'], 'pluto-texture', gl, uvProgram, true);
+	var sun = ThreeJSToUVMesh(filemap['sunJSON'], 'sun-texture', gl, uvProgram, true);
+	var mercury = ThreeJSToUVMesh(filemap['mercuryJSON'], 'mercury-texture', gl, uvProgram, true);
+	var venus = ThreeJSToUVMesh(filemap['venusJSON'], 'venus-texture', gl, uvProgram, true);
+	var earth = ThreeJSToUVMesh(filemap['earthJSON'], 'earth-texture', gl, uvProgram, true);
+	var mars = ThreeJSToUVMesh(filemap['marsJSON'], 'mars-texture', gl, uvProgram, true);
+	var jupiter = ThreeJSToUVMesh(filemap['jupiterJSON'], 'jupiter-texture', gl, uvProgram, true)
+	var saturn = ThreeJSToUVMesh(filemap['saturnJSON'], 'saturn-texture', gl, uvProgram, true);
+	var uranus = ThreeJSToUVMesh(filemap['uranusJSON'], 'uranus-texture', gl, uvProgram, true);
+	var neptune = ThreeJSToUVMesh(filemap['neptuneJSON'], 'neptune-texture', gl, uvProgram, true);
+	var pluto = ThreeJSToUVMesh(filemap['plutoJSON'], 'pluto-texture', gl, uvProgram, true);
 
-mercury.translate(new Vector(25, 0, 0));
-venus.translate(new Vector(35, 0, 0));
-earth.translate(new Vector(45, 0, 0));
-mars.translate(new Vector(60, 0, 0));
-jupiter.translate(new Vector(90, 0, 0));
-saturn.translate(new Vector(120, 0, 0));
-uranus.translate(new Vector(150, 0, 0));
-neptune.translate(new Vector(180, 0, 0));
-pluto.translate(new Vector(210, 0, 0));
+	// This is the old distances of the planets
 
-// skybox
-var skyboxImageIDs = [
-	'skybox-right',
-	'skybox-left',
-	'skybox-top',
-	'skybox-bottom',
-	'skybox-back',
-	'skybox-front'
-];
-var skybox = new Skybox(gl, skyboxProgram, skyboxImageIDs, camera);
+	// mercury.translate(new Vector(25, 0, 0));
+	// venus.translate(new Vector(35, 0, 0));
+	// earth.translate(new Vector(45, 0, 0));
+	// mars.translate(new Vector(60, 0, 0));
+	// jupiter.translate(new Vector(90, 0, 0));
+	// saturn.translate(new Vector(120, 0, 0));
+	// uranus.translate(new Vector(150, 0, 0));
+	// neptune.translate(new Vector(180, 0, 0));
+	// pluto.translate(new Vector(210, 0, 0));
+
+	// New distances of the planets 
+
+	mercury.translate(new Vector(25, 0, 0));
+	venus.translate(new Vector(55, 0, 0));
+	earth.translate(new Vector(85, 0, 0));
+	mars.translate(new Vector(110, 0, 0));
+	jupiter.translate(new Vector(130, 0, 0));
+	saturn.translate(new Vector(160, 0, 0));
+	uranus.translate(new Vector(210, 0, 0));
+	neptune.translate(new Vector(250, 0, 0));
+	pluto.translate(new Vector(290, 0, 0));
+
+
+	// skybox
+	var skyboxImageIDs = [
+		'skybox-right',
+		'skybox-left',
+		'skybox-top',
+		'skybox-bottom',
+		'skybox-back',
+		'skybox-front'
+	];
+	var skybox = new Skybox(gl, skyboxProgram, skyboxImageIDs, camera);
 
 	// textured earth material properties easter egg
 	// var earthDiffuse = 0.7;
@@ -163,7 +178,6 @@ var skybox = new Skybox(gl, skyboxProgram, skyboxImageIDs, camera);
 	var orbit = new Quaternion(angle/2, 0, 1, 0, true);
 	var pos = new Vector(0,0,0);
 
-	// change orbits for planets
 	// moon orbits 
 	// change camera startup
 	// shadow mapping maybe
