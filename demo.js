@@ -125,11 +125,11 @@ var RunDemo = function (filemap)
 	venus.translate(new Vector(55, 0, 0));
 	earth.translate(new Vector(85, 0, 0));
 	mars.translate(new Vector(110, 0, 0));
-	jupiter.translate(new Vector(130, 0, 0));
-	saturn.translate(new Vector(160, 0, 0));
-	uranus.translate(new Vector(210, 0, 0));
-	neptune.translate(new Vector(250, 0, 0));
-	pluto.translate(new Vector(290, 0, 0));
+	jupiter.translate(new Vector(230, 0, 0));
+	saturn.translate(new Vector(280, 0, 0));
+	uranus.translate(new Vector(350, 0, 0));
+	neptune.translate(new Vector(450, 0, 0));
+	pluto.translate(new Vector(500, 0, 0));
 	earthmoon.translate(new Vector(95,0,0));
 
 	// skybox aka the universe
@@ -240,7 +240,7 @@ var RunDemo = function (filemap)
 		jupiter.draw();
 
 		saturn.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		saturn.rotateAround(origin, new Quaternion(angle/2, 0, 0.4, 0, true));
+		saturn.rotateAround(origin, new Quaternion(angle/2, 0, 0.3, 0, true));
 		saturn.draw();
 
 		uranus.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
