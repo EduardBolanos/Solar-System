@@ -55,15 +55,19 @@ var RunDemo = function (filemap)
 	let fieldOfView = Math.PI / 4;
 	let nearClip = 0.01;
 	let farClip = 1000.0;
+	let camspeed = 1.2;
+	let camturn = 0.015;
 	var camera = new FPSCamera(
 		gl,
 		[uvProgram, rgbProgram],
 		aspect,
 		fieldOfView,
 		nearClip,
-		farClip
+		farClip,
+		camspeed,
+		camturn
 	);
-	camera.translate(new Vector(2, -2, 8));
+	camera.translate(new Vector(300, 0, 0));
 	camera.lookAt(new Vector(0,0,0), new Vector(0, 1, 0));
 
 	// set ambient light parameters
@@ -100,7 +104,7 @@ var RunDemo = function (filemap)
 	var uranus = ThreeJSToUVMesh(filemap['uranusJSON'], 'uranus-texture', gl, uvProgram, true);
 	var neptune = ThreeJSToUVMesh(filemap['neptuneJSON'], 'neptune-texture', gl, uvProgram, true);
 	var pluto = ThreeJSToUVMesh(filemap['plutoJSON'], 'pluto-texture', gl, uvProgram, true);
-
+	var earthmoon = ThreeJSToUVMesh(filemap['earthmoonJSON'], 'earthmoon-texture', gl, uvProgram, true);
 	// Importing the moons
 
 	// This is the old distances of the planets
@@ -126,7 +130,7 @@ var RunDemo = function (filemap)
 	uranus.translate(new Vector(210, 0, 0));
 	neptune.translate(new Vector(250, 0, 0));
 	pluto.translate(new Vector(290, 0, 0));
-
+	earthmoon.translate(new Vector(95,0,0));
 
 	// skybox aka the universe
 	var skyboxImageIDs = [
@@ -181,6 +185,8 @@ var RunDemo = function (filemap)
 	var origin = new Vector();
 	var orbit = new Quaternion(angle/2, 0, 1, 0, true);
 	var pos = new Vector(0,0,0);
+	var earthmoonorbit = new Quaternion(angle/2, 1, 1, 1);
+    
 
 	// moon orbits 
 	// change camera startup
@@ -220,6 +226,10 @@ var RunDemo = function (filemap)
 		earth.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
 		earth.rotateAround(origin, new Quaternion(angle/2, 0, 0.7, 0, true));
 		earth.draw();
+
+		earthmoon.rotateAround(origin, new Quaternion(angle/2, 0, 0.7, 0, true));
+    	earthmoon.rotateAround(earth.position, earthmoonorbit);
+    	earthmoon.draw();
 
 		mars.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
 		mars.rotateAround(origin, new Quaternion(angle/2, 0, 0.6, 0, true));
@@ -271,7 +281,8 @@ var InitDemo = function()
 		'models/saturn.json',
 		'models/uranus.json',
 		'models/neptune.json',
-		'models/pluto.json'
+		'models/pluto.json',
+		'models/earthmoon.json'
 	];
 
 	// imported file keys for file key-value map, respective to locations
@@ -291,7 +302,8 @@ var InitDemo = function()
 		'saturnJSON',
 		'uranusJSON',
 		'neptuneJSON',
-		'plutoJSON'
+		'plutoJSON',
+		'earthmoonJSON'
 	];
 
 	// file types, respective to locations (text or JSON)
@@ -302,6 +314,7 @@ var InitDemo = function()
 		'text',
 		'text',
 		'text',
+		'json',
 		'json',
 		'json',
 		'json',
