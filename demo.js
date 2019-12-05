@@ -113,42 +113,82 @@ var RunDemo = function (filemap)
 	var earthmoon = ThreeJSToUVMesh(filemap['earthmoonJSON'], 'earthmoon-texture', gl, uvProgram, true);
 	var marsmoon1 = ThreeJSToUVMesh(filemap['smallmoonJSON'], 'moon1-texture', gl, uvProgram, true);
 	var marsmoon2 = ThreeJSToUVMesh(filemap['smallmoonJSON'], 'moon2-texture', gl, uvProgram, true);
+
+	var jupitermoon1 =  ThreeJSToUVMesh(filemap['smallmoonJSON'], 'moon4-texture', gl, uvProgram, true);
+	var jupitermoon2 =  ThreeJSToUVMesh(filemap['mooncolorJSON'], 'mercury-texture', gl, uvProgram, true);
+	var jupitermoon3 =  ThreeJSToUVMesh(filemap['mooncoloriceJSON'], 'pluto-texture', gl, uvProgram, true);
+	var jupitermoon4 =  ThreeJSToUVMesh(filemap['moontwoJSON'], 'moon2-texture', gl, uvProgram, true);
+	var jupitermoon5 =  ThreeJSToUVMesh(filemap['smallmoonJSON'], 'moon4-texture', gl, uvProgram, true);
+	var jupitermoon6 =  ThreeJSToUVMesh(filemap['smallmoonJSON'], 'io-texture', gl, uvProgram, true);
+
+	var saturnmoon1 =  ThreeJSToUVMesh(filemap['smallmoonJSON'], 'pluto-texture', gl, uvProgram, true);
+	var saturnmoon2 =  ThreeJSToUVMesh(filemap['earthmoonJSON'], 'moon1-texture', gl, uvProgram, true);
+	var saturnmoon3 =  ThreeJSToUVMesh(filemap['mooncolorJSON'], 'mercury-texture', gl, uvProgram, true);
+	var saturnmoon4 =  ThreeJSToUVMesh(filemap['mooncolorJSON'], 'cody-texture', gl, uvProgram, true);
+	var saturnmoon5 =  ThreeJSToUVMesh(filemap['smallmoonJSON'], 'uranus-texture', gl, uvProgram, true);
+	var saturnmoon6 =  ThreeJSToUVMesh(filemap['moontwoJSON'], 'pluto-texture', gl, uvProgram, true);
+
+	var uranusmoon1 =  ThreeJSToUVMesh(filemap['smallmoonJSON'], 'pluto-texture', gl, uvProgram, true);
+	var uranusmoon2 =  ThreeJSToUVMesh(filemap['earthmoonJSON'], 'moon1-texture', gl, uvProgram, true);
+	var uranusmoon3 =  ThreeJSToUVMesh(filemap['mooncolorJSON'], 'mercury-texture', gl, uvProgram, true);
+	var uranusmoon4 =  ThreeJSToUVMesh(filemap['mooncolorJSON'], 'cody-texture', gl, uvProgram, true);
+	var uranusmoon5 =  ThreeJSToUVMesh(filemap['smallmoonJSON'], 'uranus-texture', gl, uvProgram, true);
+
+	var neptunemoon1 = ThreeJSToUVMesh(filemap['moonfourJSON'], 'earthmoon-texture', gl, uvProgram, true);
+	var neptunemoon2 = ThreeJSToUVMesh(filemap['moonfourJSON'], 'earthmoon-texture', gl, uvProgram, true);
+	var neptunemoon3 = ThreeJSToUVMesh(filemap['moonfourJSON'], 'earthmoon-texture', gl, uvProgram, true);
+	var neptunemoon4 = ThreeJSToUVMesh(filemap['moonfourJSON'], 'earthmoon-texture', gl, uvProgram, true);
+
 	var plutomoon1 = ThreeJSToUVMesh(filemap['smallmoonJSON'], 'moon1-texture', gl, uvProgram, true);
 	var plutomoon2 = ThreeJSToUVMesh(filemap['smallmoonJSON'], 'moon4-texture', gl, uvProgram, true);
 	var plutomoon5 = ThreeJSToUVMesh(filemap['smallmoonJSON'], 'moon2-texture', gl, uvProgram, true);
-	var neptunemoon1 = ThreeJSToUVMesh(filemap['moonfourJSON'], 'earthmoon-texture', gl, uvProgram, true);
 
-	// This is the old distances of the planets
-
-	// mercury.translate(new Vector(25, 0, 0));
-	// venus.translate(new Vector(35, 0, 0));
-	// earth.translate(new Vector(45, 0, 0));
-	// mars.translate(new Vector(60, 0, 0));
-	// jupiter.translate(new Vector(90, 0, 0));
-	// saturn.translate(new Vector(120, 0, 0));
-	// uranus.translate(new Vector(150, 0, 0));
-	// neptune.translate(new Vector(180, 0, 0));
-	// pluto.translate(new Vector(210, 0, 0));
-
-	// New distances of the planets 
+	// Distances of the planets and moons
 
 	mercury.translate(new Vector(25, 0, 0));
 	venus.translate(new Vector(55, 0, 0));
+
 	earth.translate(new Vector(85, 0, 0));
 	earthmoon.translate(new Vector(95,0,0));
+
 	mars.translate(new Vector(110, 0, 0));
 	marsmoon1.translate(new Vector(115, 0, 0));
 	marsmoon2.translate(new Vector(103, 0, 0));
+	
 	jupiter.translate(new Vector(230, 0, 0));
-	saturn.translate(new Vector(280, 0, 0));
-	saturnring.translate(new Vector(280, 0, 0));
-	uranus.translate(new Vector(350, 0, 0));
-	neptune.translate(new Vector(450, 0, 0));
-	neptunemoon1.translate(new Vector(460, 0, 0));
-	pluto.translate(new Vector(475, 0, 0));
-	plutomoon1.translate(new Vector(475, 0, 3));
-	plutomoon2.translate(new Vector(478, 0, 0));
-	plutomoon5.translate(new Vector(481, 0, 0));
+	jupitermoon1.translate(new Vector(250, 0, 3));
+	jupitermoon2.translate(new Vector(210, 0, -3));
+	jupitermoon3.translate(new Vector(233, 0, 20));
+	jupitermoon4.translate(new Vector(227, 0, -20));
+	jupitermoon5.translate(new Vector(255, 0, 7));
+	jupitermoon6.translate(new Vector(247, 0, -7));
+
+	saturn.translate(new Vector(320, 0, 0));
+	saturnring.translate(new Vector(320, 0, 0));
+	saturnmoon1.translate(new Vector(310, 0, 4));
+	saturnmoon2.translate(new Vector(330, 0, -4));
+	saturnmoon3.translate(new Vector(320, 20, 0));
+	saturnmoon4.translate(new Vector(315, 0, -9));
+	saturnmoon5.translate(new Vector(315, 0, 9));
+	saturnmoon6.translate(new Vector(320, -20, 0));
+
+	uranus.translate(new Vector(390, 0, 0));
+	uranusmoon1.translate(new Vector(380, 0, 3));
+	uranusmoon2.translate(new Vector(397, 0, 5));
+	uranusmoon3.translate(new Vector(380, 0, -3));
+	uranusmoon4.translate(new Vector(397, 0, -5));
+	uranusmoon5.translate(new Vector(390, 12, 0));
+
+	neptune.translate(new Vector(490, 0, 0));
+	neptunemoon1.translate(new Vector(500, 0, 0));
+	neptunemoon2.translate(new Vector(492, 0, 12));
+	neptunemoon3.translate(new Vector(483, 12, 0));
+	neptunemoon4.translate(new Vector(490, -12, 3));
+
+	pluto.translate(new Vector(515, 0, 0));
+	plutomoon1.translate(new Vector(515, 0, 3));
+	plutomoon2.translate(new Vector(518, 0, 0));
+	plutomoon5.translate(new Vector(521, 0, 0));
 
 
 	// skybox aka the universe
@@ -266,12 +306,60 @@ var RunDemo = function (filemap)
 		jupiter.rotateAround(origin, new Quaternion(angle/2, 0, 0.5, 0, true));
 		jupiter.draw();
 
+		jupitermoon1.rotateAround(origin, new Quaternion(angle/2, 0, 0.5, 0, true));
+		jupitermoon1.rotateAround(jupiter.position, earthmoonorbit);
+		jupitermoon1.draw();
+
+		jupitermoon2.rotateAround(origin, new Quaternion(angle/2, 0, 0.5, 0, true));
+		jupitermoon2.rotateAround(jupiter.position, earthmoonorbit);
+		jupitermoon2.draw();
+
+		jupitermoon3.rotateAround(origin, new Quaternion(angle/2, 0, 0.5, 0, true));
+		jupitermoon3.rotateAround(jupiter.position, earthmoonorbit);
+		jupitermoon3.draw();
+
+		jupitermoon4.rotateAround(origin, new Quaternion(angle/2, 0, 0.5, 0, true));
+		jupitermoon4.rotateAround(jupiter.position, earthmoonorbit);
+		jupitermoon4.draw();
+
+		jupitermoon5.rotateAround(origin, new Quaternion(angle/2, 0, 0.5, 0, true));
+		jupitermoon5.rotateAround(jupiter.position, earthmoonorbit);
+		jupitermoon5.draw();
+
+		jupitermoon6.rotateAround(origin, new Quaternion(angle/2, 0, 0.5, 0, true));
+		jupitermoon6.rotateAround(jupiter.position, earthmoonorbit);
+		jupitermoon6.draw();
+
 		saturn.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
 		saturn.rotateAround(origin, new Quaternion(angle/2, 0, 0.3, 0, true));
 		saturn.draw();
 
 		saturnring.rotateAround(origin, new Quaternion(angle/2, 0, 0.3, 0, true));
 		saturnring.draw();
+
+		saturnmoon1.rotateAround(origin, new Quaternion(angle/2, 0, 0.3, 0, true));
+		saturnmoon1.rotateAround(saturn.position, earthmoonorbit);
+		saturnmoon1.draw();
+
+		saturnmoon2.rotateAround(origin, new Quaternion(angle/2, 0, 0.3, 0, true));
+		saturnmoon2.rotateAround(saturn.position, earthmoonorbit);
+		saturnmoon2.draw();
+
+		saturnmoon3.rotateAround(origin, new Quaternion(angle/2, 0, 0.3, 0, true));
+		saturnmoon3.rotateAround(saturn.position, earthmoonorbit);
+		saturnmoon3.draw();
+
+		saturnmoon4.rotateAround(origin, new Quaternion(angle/2, 0, 0.3, 0, true));
+		saturnmoon4.rotateAround(saturn.position, earthmoonorbit);
+		saturnmoon4.draw();
+
+		saturnmoon5.rotateAround(origin, new Quaternion(angle/2, 0, 0.3, 0, true));
+		saturnmoon5.rotateAround(saturn.position, earthmoonorbit);
+		saturnmoon5.draw();
+
+		saturnmoon6.rotateAround(origin, new Quaternion(angle/2, 0, 0.3, 0, true));
+		saturnmoon6.rotateAround(saturn.position, earthmoonorbit);
+		saturnmoon6.draw();
 
 		uranus.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
 		uranus.rotateAround(origin, new Quaternion(angle/2, 0, 0.23, 0, true));
@@ -333,7 +421,10 @@ var InitDemo = function()
 		'models/earthmoon.json',
 		'models/saturnring.json',
 		'models/mooncolorsmall.json',
-		'models/moonfour.json'
+		'models/moonfour.json',
+		'models/mooncolor.json',
+		'models/mooncolorice.json',
+		'models/moontwo.json'
 	];
 
 	// imported file keys for file key-value map, respective to locations
@@ -357,6 +448,10 @@ var InitDemo = function()
 		'earthmoonJSON',
 		'saturnringJSON',
 		'smallmoonJSON',
+		'moonfourJSON',
+		'mooncolorJSON',
+		'mooncoloriceJSON',
+		'moontwoJSON',
 		'moonfourJSON'
 	];
 
@@ -382,7 +477,12 @@ var InitDemo = function()
 		'json',
 		'json',
 		'json',
+		'json',
+		'json',
+		'json',
+		'json',
 		'json'
+	
 	];
 	
 	var importer = new resourceImporter(urls, names, types, RunDemo);
