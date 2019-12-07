@@ -106,8 +106,6 @@ var RunDemo = function (filemap)
 	var pluto = ThreeJSToUVMesh(filemap['plutoJSON'], 'pluto-texture', gl, uvProgram, true);
 	var saturnring = ThreeJSToUVMesh(filemap['saturnringJSON'], 'saturn-texture', gl, uvProgram, true);
 
-
-
 	// Importing the moons
 
 	var earthmoon = ThreeJSToUVMesh(filemap['earthmoonJSON'], 'earthmoon-texture', gl, uvProgram, true);
@@ -146,6 +144,7 @@ var RunDemo = function (filemap)
 	// Distances of the planets and moons
 
 	mercury.translate(new Vector(25, 0, 0));
+
 	venus.translate(new Vector(55, 0, 0));
 
 	earth.translate(new Vector(85, 0, 0));
@@ -190,7 +189,6 @@ var RunDemo = function (filemap)
 	plutomoon2.translate(new Vector(518, 0, 0));
 	plutomoon5.translate(new Vector(521, 0, 0));
 
-
 	// skybox aka the universe
 	var skyboxImageIDs = [
 		'skybox-right',
@@ -201,31 +199,6 @@ var RunDemo = function (filemap)
 		'skybox-front'
 	];
 	var skybox = new Skybox(gl, skyboxProgram, skyboxImageIDs, camera);
-
-	// textured earth material properties easter egg
-	// var earthDiffuse = 0.7;
-	// var earthSpecular = 0.3;
-	// var earthAmbient = 0.2;
-	// var earthShininess = 0.1;
-
-	// // create textured earth (sphere)
-	// uvEarth = new UVMesh(
-	// 	gl,
-	// 	uvProgram,
-	// 	Sphere.positionArray(30,30),
-	// 	Sphere.indexArray(30,30),
-	// 	Sphere.positionArray(30,30),
-	// 	Sphere.uvArray(30,30),
-	// 	'earth-texture',
-	// 	false,
-	// 	earthDiffuse,
-	// 	earthSpecular,
-	// 	earthAmbient,
-	// 	earthShininess
-	// );
-
-	// uvEarth.translate(new Vector(2, 0, 0));
-
 
 	// set up some arbitrary constants for motion
 	var startTime = Date.now();
@@ -246,10 +219,6 @@ var RunDemo = function (filemap)
 	var pos = new Vector(0,0,0);
 	var earthmoonorbit = new Quaternion(angle/2, 1, 1, 1);
     
-
-	// moon orbits 
-	// change camera startup
-	// shadow mapping maybe
 
 	var main = function()
 	{
@@ -365,6 +334,26 @@ var RunDemo = function (filemap)
 		uranus.rotateAround(origin, new Quaternion(angle/2, 0, 0.23, 0, true));
 		uranus.draw();
 
+		uranusmoon1.rotateAround(origin, new Quaternion(angle/2, 0, 0.23, 0, true));
+		uranusmoon1.rotateAround(uranus.position, earthmoonorbit);
+		uranusmoon1.draw();
+
+		uranusmoon2.rotateAround(origin, new Quaternion(angle/2, 0, 0.23, 0, true));
+		uranusmoon2.rotateAround(uranus.position, earthmoonorbit);
+		uranusmoon2.draw();
+
+		uranusmoon3.rotateAround(origin, new Quaternion(angle/2, 0, 0.23, 0, true));
+		uranusmoon3.rotateAround(uranus.position, earthmoonorbit);
+		uranusmoon3.draw();
+
+		uranusmoon4.rotateAround(origin, new Quaternion(angle/2, 0, 0.23, 0, true));
+		uranusmoon4.rotateAround(uranus.position, earthmoonorbit);
+		uranusmoon4.draw();
+
+		uranusmoon5.rotateAround(origin, new Quaternion(angle/2, 0, 0.23, 0, true));
+		uranusmoon5.rotateAround(uranus.position, earthmoonorbit);
+		uranusmoon5.draw();
+
 		neptune.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
 		neptune.rotateAround(origin, new Quaternion(angle/2, 0, 0.2, 0, true));
 		neptune.draw();
@@ -373,6 +362,17 @@ var RunDemo = function (filemap)
 		neptunemoon1.rotateAround(neptune.position, earthmoonorbit);
 		neptunemoon1.draw();
 
+		neptunemoon2.rotateAround(origin, new Quaternion(angle/2, 0, 0.2, 0, true));
+		neptunemoon2.rotateAround(neptune.position, earthmoonorbit);
+		neptunemoon2.draw();
+
+		neptunemoon3.rotateAround(origin, new Quaternion(angle/2, 0, 0.2, 0, true));
+		neptunemoon3.rotateAround(neptune.position, earthmoonorbit);
+		neptunemoon3.draw();
+
+		neptunemoon4.rotateAround(origin, new Quaternion(angle/2, 0, 0.2, 0, true));
+		neptunemoon4.rotateAround(neptune.position, earthmoonorbit);
+		neptunemoon4.draw();
 
 		pluto.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
 		pluto.rotateAround(origin, new Quaternion(angle/2, 0, 0.1, 0, true));
@@ -389,7 +389,6 @@ var RunDemo = function (filemap)
 		plutomoon5.rotateAround(origin, new Quaternion(angle/2, 0, 0.1, 0, true));
 		plutomoon5.rotateAround(pluto.position, new Quaternion(angle/2, 1, 2, 1));
 		plutomoon5.draw();
-
 
 		skybox.draw();
 
