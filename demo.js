@@ -215,7 +215,6 @@ var RunDemo = function (filemap)
 	// some arbitrary constants for origins and orbits of the planets
 	var angle = Math.PI / 100;
 	var origin = new Vector();
-	var orbit = new Quaternion(angle/2, 0, 1, 0, true);
 	var pos = new Vector(0,0,0);
 	var earthmoonorbit = new Quaternion(angle/2, 1, 1, 1);
     
@@ -244,149 +243,149 @@ var RunDemo = function (filemap)
 		sun.draw();
 
 		mercury.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		mercury.rotateAround(origin, new Quaternion(angle/2, 0, 1, 0, true));
+		mercury.rotateAround(origin, new Quaternion(angle*(365/88), 0, 1, 0));
 		mercury.draw();
 
 		venus.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		venus.rotateAround(origin, new Quaternion(angle/2, 0, 0.8, 0, true));
+		venus.rotateAround(origin, new Quaternion(angle*(365/225), 0, 1, 0));
 		venus.draw();
 
 		earth.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		earth.rotateAround(origin, new Quaternion(angle/2, 0, 0.7, 0, true));
+		earth.rotateAround(origin, new Quaternion(angle, 0, 1, 0));
 		earth.draw();
 
-		earthmoon.rotateAround(origin, new Quaternion(angle/2, 0, 0.7, 0, true));
+		earthmoon.rotateAround(origin, new Quaternion(angle, 0, 1, 0));
     	earthmoon.rotateAround(earth.position, earthmoonorbit);
     	earthmoon.draw();
 
 		mars.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		mars.rotateAround(origin, new Quaternion(angle/2, 0, 0.6, 0, true));
+		mars.rotateAround(origin, new Quaternion(angle*(365/687), 0, 1, 0));
 		mars.draw();
 
-		marsmoon1.rotateAround(origin, new Quaternion(angle/2, 0, 0.6, 0, true));
+		marsmoon1.rotateAround(origin, new Quaternion(angle*(365/687), 0, 1, 0));
 		marsmoon1.rotateAround(mars.position, earthmoonorbit);
 		marsmoon1.draw();
 
-		marsmoon2.rotateAround(origin, new Quaternion(angle/2, 0, 0.6, 0, true));
+		marsmoon2.rotateAround(origin, new Quaternion(angle*(365/687), 0, 1, 0));
 		marsmoon2.rotateAround(mars.position, earthmoonorbit);
 		marsmoon2.draw();
 
 		jupiter.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		jupiter.rotateAround(origin, new Quaternion(angle/2, 0, 0.5, 0, true));
+		jupiter.rotateAround(origin, new Quaternion(angle/12, 0, 1, 0));
 		jupiter.draw();
 
-		jupitermoon1.rotateAround(origin, new Quaternion(angle/2, 0, 0.5, 0, true));
+		jupitermoon1.rotateAround(origin, new Quaternion(angle/12, 0, 1, 0));
 		jupitermoon1.rotateAround(jupiter.position, earthmoonorbit);
 		jupitermoon1.draw();
 
-		jupitermoon2.rotateAround(origin, new Quaternion(angle/2, 0, 0.5, 0, true));
+		jupitermoon2.rotateAround(origin, new Quaternion(angle/12, 0, 1, 0));
 		jupitermoon2.rotateAround(jupiter.position, earthmoonorbit);
 		jupitermoon2.draw();
 
-		jupitermoon3.rotateAround(origin, new Quaternion(angle/2, 0, 0.5, 0, true));
+		jupitermoon3.rotateAround(origin, new Quaternion(angle/12, 0, 1, 0));
 		jupitermoon3.rotateAround(jupiter.position, earthmoonorbit);
 		jupitermoon3.draw();
 
-		jupitermoon4.rotateAround(origin, new Quaternion(angle/2, 0, 0.5, 0, true));
+		jupitermoon4.rotateAround(origin, new Quaternion(angle/12, 0, 1, 0));
 		jupitermoon4.rotateAround(jupiter.position, earthmoonorbit);
 		jupitermoon4.draw();
 
-		jupitermoon5.rotateAround(origin, new Quaternion(angle/2, 0, 0.5, 0, true));
+		jupitermoon5.rotateAround(origin, new Quaternion(angle/12, 0, 1, 0));
 		jupitermoon5.rotateAround(jupiter.position, earthmoonorbit);
 		jupitermoon5.draw();
 
-		jupitermoon6.rotateAround(origin, new Quaternion(angle/2, 0, 0.5, 0, true));
+		jupitermoon6.rotateAround(origin, new Quaternion(angle/12, 0, 1, 0));
 		jupitermoon6.rotateAround(jupiter.position, earthmoonorbit);
 		jupitermoon6.draw();
 
 		saturn.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		saturn.rotateAround(origin, new Quaternion(angle/2, 0, 0.3, 0, true));
+		saturn.rotateAround(origin, new Quaternion(angle/29, 0, 1, 0));
 		saturn.draw();
 
-		saturnring.rotateAround(origin, new Quaternion(angle/2, 0, 0.3, 0, true));
+		saturnring.rotateAround(origin, new Quaternion(angle/29, 0, 1, 0));
 		saturnring.draw();
 
-		saturnmoon1.rotateAround(origin, new Quaternion(angle/2, 0, 0.3, 0, true));
+		saturnmoon1.rotateAround(origin, new Quaternion(angle/29, 0, 1, 0));
 		saturnmoon1.rotateAround(saturn.position, earthmoonorbit);
 		saturnmoon1.draw();
 
-		saturnmoon2.rotateAround(origin, new Quaternion(angle/2, 0, 0.3, 0, true));
+		saturnmoon2.rotateAround(origin, new Quaternion(angle/29, 0, 1, 0));
 		saturnmoon2.rotateAround(saturn.position, earthmoonorbit);
 		saturnmoon2.draw();
 
-		saturnmoon3.rotateAround(origin, new Quaternion(angle/2, 0, 0.3, 0, true));
+		saturnmoon3.rotateAround(origin, new Quaternion(angle/29, 0, 1, 0));
 		saturnmoon3.rotateAround(saturn.position, earthmoonorbit);
 		saturnmoon3.draw();
 
-		saturnmoon4.rotateAround(origin, new Quaternion(angle/2, 0, 0.3, 0, true));
+		saturnmoon4.rotateAround(origin, new Quaternion(angle/29, 0, 1, 0));
 		saturnmoon4.rotateAround(saturn.position, earthmoonorbit);
 		saturnmoon4.draw();
 
-		saturnmoon5.rotateAround(origin, new Quaternion(angle/2, 0, 0.3, 0, true));
+		saturnmoon5.rotateAround(origin, new Quaternion(angle/29, 0, 1, 0));
 		saturnmoon5.rotateAround(saturn.position, earthmoonorbit);
 		saturnmoon5.draw();
 
-		saturnmoon6.rotateAround(origin, new Quaternion(angle/2, 0, 0.3, 0, true));
+		saturnmoon6.rotateAround(origin, new Quaternion(angle/29, 0, 1, 0));
 		saturnmoon6.rotateAround(saturn.position, earthmoonorbit);
 		saturnmoon6.draw();
 
 		uranus.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		uranus.rotateAround(origin, new Quaternion(angle/2, 0, 0.23, 0, true));
+		uranus.rotateAround(origin, new Quaternion(angle/84, 0, 1, 0));
 		uranus.draw();
 
-		uranusmoon1.rotateAround(origin, new Quaternion(angle/2, 0, 0.23, 0, true));
+		uranusmoon1.rotateAround(origin, new Quaternion(angle/84, 0, 1, 0));
 		uranusmoon1.rotateAround(uranus.position, earthmoonorbit);
 		uranusmoon1.draw();
 
-		uranusmoon2.rotateAround(origin, new Quaternion(angle/2, 0, 0.23, 0, true));
+		uranusmoon2.rotateAround(origin, new Quaternion(angle/84, 0, 1, 0));
 		uranusmoon2.rotateAround(uranus.position, earthmoonorbit);
 		uranusmoon2.draw();
 
-		uranusmoon3.rotateAround(origin, new Quaternion(angle/2, 0, 0.23, 0, true));
+		uranusmoon3.rotateAround(origin, new Quaternion(angle/84, 0, 1, 0));
 		uranusmoon3.rotateAround(uranus.position, earthmoonorbit);
 		uranusmoon3.draw();
 
-		uranusmoon4.rotateAround(origin, new Quaternion(angle/2, 0, 0.23, 0, true));
+		uranusmoon4.rotateAround(origin, new Quaternion(angle/84, 0, 1, 0));
 		uranusmoon4.rotateAround(uranus.position, earthmoonorbit);
 		uranusmoon4.draw();
 
-		uranusmoon5.rotateAround(origin, new Quaternion(angle/2, 0, 0.23, 0, true));
+		uranusmoon5.rotateAround(origin, new Quaternion(angle/84, 0, 1, 0));
 		uranusmoon5.rotateAround(uranus.position, earthmoonorbit);
 		uranusmoon5.draw();
 
 		neptune.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		neptune.rotateAround(origin, new Quaternion(angle/2, 0, 0.2, 0, true));
+		neptune.rotateAround(origin, new Quaternion(angle/165, 0, 1, 0));
 		neptune.draw();
 
-		neptunemoon1.rotateAround(origin, new Quaternion(angle/2, 0, 0.2, 0, true));
+		neptunemoon1.rotateAround(origin, new Quaternion(angle/165, 0, 1, 0));
 		neptunemoon1.rotateAround(neptune.position, earthmoonorbit);
 		neptunemoon1.draw();
 
-		neptunemoon2.rotateAround(origin, new Quaternion(angle/2, 0, 0.2, 0, true));
+		neptunemoon2.rotateAround(origin, new Quaternion(angle/165, 0, 1, 0));
 		neptunemoon2.rotateAround(neptune.position, earthmoonorbit);
 		neptunemoon2.draw();
 
-		neptunemoon3.rotateAround(origin, new Quaternion(angle/2, 0, 0.2, 0, true));
+		neptunemoon3.rotateAround(origin, new Quaternion(angle/165, 0, 1, 0));
 		neptunemoon3.rotateAround(neptune.position, earthmoonorbit);
 		neptunemoon3.draw();
 
-		neptunemoon4.rotateAround(origin, new Quaternion(angle/2, 0, 0.2, 0, true));
+		neptunemoon4.rotateAround(origin, new Quaternion(angle/165, 0, 1, 0));
 		neptunemoon4.rotateAround(neptune.position, earthmoonorbit);
 		neptunemoon4.draw();
 
 		pluto.rotate(new Quaternion(Math.PI/1000, 0, 1, 0));
-		pluto.rotateAround(origin, new Quaternion(angle/2, 0, 0.1, 0, true));
+		pluto.rotateAround(origin, new Quaternion(angle/248, 0, 1, 0));
 		pluto.draw();
 
-		plutomoon1.rotateAround(origin, new Quaternion(angle/2, 0, 0.1, 0, true));
+		plutomoon1.rotateAround(origin, new Quaternion(angle/248, 0, 1, 0));
 		plutomoon1.rotateAround(pluto.position, new Quaternion(angle/2, 2, 1, 0));
 		plutomoon1.draw();
 
-		plutomoon2.rotateAround(origin, new Quaternion(angle/2, 0, 0.1, 0, true));
+		plutomoon2.rotateAround(origin, new Quaternion(angle/248, 0, 1, 0));
 		plutomoon2.rotateAround(pluto.position, new Quaternion(angle/2, 2, 0, 1));
 		plutomoon2.draw();
 
-		plutomoon5.rotateAround(origin, new Quaternion(angle/2, 0, 0.1, 0, true));
+		plutomoon5.rotateAround(origin, new Quaternion(angle/248, 0, 1, 0));
 		plutomoon5.rotateAround(pluto.position, new Quaternion(angle/2, 1, 2, 1));
 		plutomoon5.draw();
 
