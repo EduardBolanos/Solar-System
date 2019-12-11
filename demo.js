@@ -105,7 +105,7 @@ var RunDemo = function (filemap)
 	var neptune = ThreeJSToUVMesh(filemap['neptuneJSON'], 'neptune-texture', gl, uvProgram, true);
 	var pluto = ThreeJSToUVMesh(filemap['plutoJSON'], 'pluto-texture', gl, uvProgram, true);
 	var saturnring = ThreeJSToUVMesh(filemap['saturnringJSON'], 'saturn-texture', gl, uvProgram, true);
-	var moonmoon = ThreeJSToUVMesh(filemap['moonmoonJSON'], 'moonmoon-texture', gl, uvProgram, true);
+	var moonmoon = ThreeJSToUVMesh(filemap['earthJSON'], 'moonmoon-texture', gl, uvProgram, true);
 	// Importing the moons
 
 	var earthmoon = ThreeJSToUVMesh(filemap['earthmoonJSON'], 'earthmoon-texture', gl, uvProgram, true);
@@ -426,8 +426,7 @@ var InitDemo = function()
 		'models/moonfour.json',
 		'models/mooncolor.json',
 		'models/mooncolorice.json',
-		'models/moontwo.json',
-		'models/moonmoon.json'
+		'models/moontwo.json'
 	];
 
 	// imported file keys for file key-value map, respective to locations
@@ -455,8 +454,7 @@ var InitDemo = function()
 		'mooncolorJSON',
 		'mooncoloriceJSON',
 		'moontwoJSON',
-		'moonfourJSON',
-		'moonmoonJSON'
+		'moonfourJSON'
 	];
 
 	// file types, respective to locations (text or JSON)
@@ -467,8 +465,6 @@ var InitDemo = function()
 		'text',
 		'text',
 		'text',
-		'json',
-		'json',
 		'json',
 		'json',
 		'json',
